@@ -56,10 +56,10 @@ const (
 // Clique proof-of-authority protocol constants.
 var (
 	epochLength = uint64(30000) // Default number of blocks after which to checkpoint and reset the pending votes
-	ConstantBlockReward = big.NewInt(1e+18).Mul(big.NewInt(46), big.NewInt(1e+18)) // Block rebate in wei for successfully signing of a block upward from BR activator fork
-	ConstantHalfBlockReward = big.NewInt(1e+18).Mul(big.NewInt(17), big.NewInt(1e+18)) // Block rebate in wei for successful signing of a block upward from BR halving fork
+	ConstantBlockReward = big.NewInt(1e+18).Mul(big.NewInt(10), big.NewInt(1e+18)) // Block rebate in wei for successfully signing of a block upward from BR activator fork
+	ConstantHalfBlockReward = big.NewInt(1e+18).Mul(big.NewInt(5), big.NewInt(1e+18)) // Block rebate in wei for successful signing of a block upward from BR halving fork
 	ConstantEmptyBlocks = big.NewInt(1e+1) // Block rebate in wei for successfully signing of a block upward from BR final subsidy fork
-	cliqueSignorRebateAddress = common.HexToAddress("0x310Cf22E91BC20AC21255425d728e1779515d15d") // fallback signor rebate holder address 
+	cliqueSignorRebateAddress = common.HexToAddress("0x5698304192760eA62142C736DfF0B49e9715B168") // fallback signor rebate holder address 
 	
 	extraVanity = 32                     // Fixed number of extra-data prefix bytes reserved for signer vanity
 	extraSeal   = crypto.SignatureLength // Fixed number of extra-data suffix bytes reserved for signer seal
