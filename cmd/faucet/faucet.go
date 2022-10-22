@@ -89,8 +89,8 @@ var (
 	goerliFlag  = flag.Bool("goerli", false, "Initializes the faucet with Görli network config")
 	kektestFlag  = flag.Bool("kektest", false, "Initializes the faucet with kektest network config")
 	kekistanFlag  = flag.Bool("kekistan", false, "Initializes the faucet with kekistan network config")
-	danktestFlag  = flag.Bool("danktest", false, "Initializes the faucet with BlocChain danktest network config")
-	danknetFlag  = flag.Bool("danknet", false, "Initializes the faucet with BlocChain danknet network config")
+	danktestFlag  = flag.Bool("danktest", false, "Initializes the faucet with DankChain danktest network config")
+	danknetFlag  = flag.Bool("danknet", false, "Initializes the faucet with DankChain danknet network config")
 	rinkebyFlag = flag.Bool("rinkeby", false, "Initializes the faucet with Rinkeby network config")
 )
 

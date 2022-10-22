@@ -72,4 +72,4 @@ copy the entire ENR address from node1, and use this ENR as a bootnode for node3
 
 repeat the process doing the same step from node1, get the ENR and then copy it, restart node3 with node1 ENR as bootnode.
 
-There you have it, your local geth (blocChain) genesis was initialized with flag --danktest, and the local chain is now synchronized with the mainnet blocChain, and the seed nodes are constructed to bootnodes from each other (meaning they will reach those nodes for synchronization)
+There you have it, your local geth (dankChain) genesis was initialized with flag --danktest, and the local chain is now synchronized with the mainnet dankChain, and the seed nodes are constructed to bootnodes from each other (meaning they will reach those nodes for synchronization)

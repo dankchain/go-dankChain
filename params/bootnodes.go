@@ -192,5 +192,5 @@ func KnownDNSNetwork(genesis common.Hash, protocol string) string {
 	default:
 		return ""
 	}
-	return dnsPrefix + protocol + "." + net + ".blocChain.app"
+	return dnsPrefix + protocol + "." + net + ".dankChain.app"
 }

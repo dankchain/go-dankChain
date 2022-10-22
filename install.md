@@ -12,16 +12,16 @@ git clone https://github.com/dankChain/go-dankChain
 windows requires quotes wrapped around the path, linux does not allow them...
 linux:
 ```
-export GOPATH=~/path/to/go-blocChain/bin
+export GOPATH=~/path/to/go-dankChain/bin
 ```
 windows: 
 ```
-export GOPATH="/c/path/to/go-blocChain/bin"
+export GOPATH="/c/path/to/go-dankChain/bin"
 ```
 
-steps 3, and 4 starting from the root path of go-blocChain 
+steps 3, and 4 starting from the root path of go-dankChain 
 
-3) use script [mkdirbin.sh](https://github.com/bloc-Chain/go-blocChain/blob/published/mkdirbin.sh)
+3) use script [mkdirbin.sh](https://github.com/bloc-Chain/go-dankChain/blob/published/mkdirbin.sh)
 OR
 manually make a /bin directory, and install with go 
 ```
@@ -29,7 +29,7 @@ mkdir bin && go install ./...
 ```
 The bin/bin directory will contain the executables of geth
 
-4) use the flag --danknet to initialize the genesis of mainnet blocChain, or for testnet use the flag --danktest
+4) use the flag --danknet to initialize the genesis of mainnet dankChain, or for testnet use the flag --danktest
 mainnet: 
 ```
 --danknet

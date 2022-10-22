@@ -161,13 +161,13 @@ var (
 		Name:  "kekistan",
 		Usage: "Kekchain proof-of-authority with rebates mainnet",
 	}
-	BlocTestFlag = cli.BoolFlag{
+	DankTestFlag = cli.BoolFlag{
 		Name:  "danktest",
-		Usage: "BlocTest BlocChain network: pre-configured proof-of-authority test network",
+		Usage: "BlocTest DankChain network: pre-configured proof-of-authority test network",
 	}
 	DankNetFlag = cli.BoolFlag{
 		Name:  "danknet",
-		Usage: "DankNet BlocChain Mainet proof-of-authority mainnet",
+		Usage: "DankNet DankChain Mainet proof-of-authority mainnet",
 	}
 	RopstenFlag = cli.BoolFlag{
 		Name:  "ropsten",
@@ -830,7 +830,7 @@ func MakeDataDir(ctx *cli.Context) string {
 		if ctx.GlobalBool(KekistanFlag.Name) {
 			return filepath.Join(path, "kekistan")
 		}
-		if ctx.GlobalBool(BlocTestFlag.Name) {
+		if ctx.GlobalBool(DankTestFlag.Name) {
 			return filepath.Join(path, "danktest")
 		}
 		if ctx.GlobalBool(DankNetFlag.Name) {
@@ -899,7 +899,7 @@ func setBootstrapNodes(ctx *cli.Context, cfg *p2p.Config) {
 		urls = params.TestnetKEKBootnodes
 	case ctx.GlobalBool(DankNetFlag.Name): 
 		urls = params.MainnetBootnodes
-	case ctx.GlobalBool(BlocTestFlag.Name): 
+	case ctx.GlobalBool(DankTestFlag.Name): 
 		urls = params.TestnetBootnodes
 	case cfg.BootstrapNodes != nil:
 		return // already set, don't apply defaults.
@@ -1324,7 +1324,7 @@ func setDataDir(ctx *cli.Context, cfg *node.Config) {
 		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "kektest")
 	case ctx.GlobalBool(KekistanFlag.Name) && cfg.DataDir == node.DefaultDataDir():
 		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "kekistan")
-	case ctx.GlobalBool(BlocTestFlag.Name) && cfg.DataDir == node.DefaultDataDir():
+	case ctx.GlobalBool(DankTestFlag.Name) && cfg.DataDir == node.DefaultDataDir():
 		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "danktest")
 	case ctx.GlobalBool(DankNetFlag.Name) && cfg.DataDir == node.DefaultDataDir():
 		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "danknet")
@@ -1515,7 +1515,7 @@ func CheckExclusive(ctx *cli.Context, args ...interface{}) {
 // SetEthConfig applies eth-related command line flags to the config.
 func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *ethconfig.Config) {
 	// Avoid conflicting network flags
-	CheckExclusive(ctx, MainnetFlag, DeveloperFlag, RopstenFlag, RinkebyFlag, GoerliFlag, KekTestFlag, KekistanFlag, BlocTestFlag, DankNetFlag, SepoliaFlag)
+	CheckExclusive(ctx, MainnetFlag, DeveloperFlag, RopstenFlag, RinkebyFlag, GoerliFlag, KekTestFlag, KekistanFlag, DankTestFlag, DankNetFlag, SepoliaFlag)
 	CheckExclusive(ctx, LightServeFlag, SyncModeFlag, "light")
 	CheckExclusive(ctx, DeveloperFlag, ExternalSignerFlag) // Can't use both ephemeral unlocked and external signer
 	if ctx.GlobalString(GCModeFlag.Name) == "archive" && ctx.GlobalUint64(TxLookupLimitFlag.Name) != 0 {
@@ -1689,7 +1689,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *ethconfig.Config) {
 		}
 		cfg.Genesis = core.DefaultKEKGenesisBlock()
 		SetDNSDiscoveryDefaults(cfg, params.MainnetKEKGenesisHash)
-	case ctx.GlobalBool(BlocTestFlag.Name):
+	case ctx.GlobalBool(DankTestFlag.Name):
 		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
 			cfg.NetworkId = 6969
 		}
@@ -1943,7 +1943,7 @@ func MakeGenesis(ctx *cli.Context) *core.Genesis {
 		genesis = core.DefaultKEKTestnetGenesisBlock()
 	case ctx.GlobalBool(KekistanFlag.Name):
 		genesis = core.DefaultKEKGenesisBlock()
-	case ctx.GlobalBool(BlocTestFlag.Name):
+	case ctx.GlobalBool(DankTestFlag.Name):
 		genesis = core.DefaultTestnetGenesisBlock()
 	case ctx.GlobalBool(DankNetFlag.Name):
 		genesis = core.DefaultGenesisBlock()

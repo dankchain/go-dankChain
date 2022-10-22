@@ -148,7 +148,7 @@ var (
 		utils.GoerliFlag,
 		utils.KekTestFlag,
 		utils.KekistanFlag,
-		utils.BlocTestFlag,
+		utils.DankTestFlag,
 		utils.DankNetFlag,
 		utils.VMEnableDebugFlag,
 		utils.NetworkIdFlag,
@@ -292,17 +292,17 @@ func prepare(ctx *cli.Context) {
 	case ctx.GlobalIsSet(utils.KekistanFlag.Name):
 		log.Info("Starting Geth on Kekistan mainnnet...")
 		
-	case ctx.GlobalIsSet(utils.BlocTestFlag.Name):
-		log.Info("Starting Geth on BlocChain BlocTest testnet...")
+	case ctx.GlobalIsSet(utils.DankTestFlag.Name):
+		log.Info("Starting Geth on DankChain BlocTest testnet...")
 		
 	case ctx.GlobalIsSet(utils.DankNetFlag.Name):
-		log.Info("Starting Geth on BlocChain DankNet mainnet...")
+		log.Info("Starting Geth on DankChain DankNet mainnet...")
 
 	case ctx.GlobalIsSet(utils.DeveloperFlag.Name):
 		log.Info("Starting Geth in ephemeral dev mode...")
 
 	case !ctx.GlobalIsSet(utils.NetworkIdFlag.Name):
-		log.Info("Starting Geth on BlocChain mainnet...")
+		log.Info("Starting Geth on DankChain mainnet...")
 	}
 	// If we're a full node on mainnet without --cache specified, bump default cache allowance
 	if ctx.GlobalString(utils.SyncModeFlag.Name) != "light" && !ctx.GlobalIsSet(utils.CacheFlag.Name) && !ctx.GlobalIsSet(utils.NetworkIdFlag.Name) {
@@ -313,7 +313,7 @@ func prepare(ctx *cli.Context) {
 			!ctx.GlobalIsSet(utils.GoerliFlag.Name) &&
 			!ctx.GlobalIsSet(utils.KekTestFlag.Name) &&
 			!ctx.GlobalIsSet(utils.KekistanFlag.Name) &&
-			!ctx.GlobalIsSet(utils.BlocTestFlag.Name) &&
+			!ctx.GlobalIsSet(utils.DankTestFlag.Name) &&
 			!ctx.GlobalIsSet(utils.DankNetFlag.Name) &&
 			!ctx.GlobalIsSet(utils.DeveloperFlag.Name) {
 			// Nope, we're really on mainnet. Bump that cache up!
