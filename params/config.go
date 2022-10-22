@@ -27,7 +27,7 @@ import (
 
 // Genesis hashes to enforce below configs on.
 var (
-	MainnetGenesisHash    = common.HexToHash("0x91511bbf33d6c569a686bdb5b390c355ea5c3d1ce926e6b6c2f95c9707511734")
+	MainnetGenesisHash    = common.HexToHash("0xd935398f9af0d8d54dbea5a320bac3b108a64fe71a5f86ba774f1676203e884c")
 	TestnetGenesisHash    = common.HexToHash("0x91511bbf33d6c569a686bdb5b390c355ea5c3d1ce926e6b6c2f95c9707511734")
 	MainnetKEKGenesisHash = common.HexToHash("0x3ee766abd8a19fc6fff8d267e9a4cf77a1f73a9a3fb96029b8026da6db8cafd6")
 	TestnetKEKGenesisHash = common.HexToHash("0x0146c570e9f4559cfbbc7bf93de7149338cd2d505139af96c8f47c3bfa5da0c9")
@@ -110,7 +110,7 @@ var (
 
 	// MainnetChainConfig is the chain parameters to run a node on the main network.	
 	MainnetChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(777),
+		ChainID:             big.NewInt(696969),
 		HomesteadBlock:      big.NewInt(0),
 		DAOForkBlock:        nil,
 		DAOForkSupport:      false,
@@ -125,9 +125,9 @@ var (
 		MuirGlacierBlock:    big.NewInt(0),
 		BerlinBlock:         big.NewInt(0),
 		LondonBlock:         big.NewInt(0),
-		BRBlock:	         big.NewInt(0),
-		BRHalving:			 big.NewInt(1000000),
-		BRFinalSubsidy:		 big.NewInt(3000000),
+		BRBlock:	     big.NewInt(0),
+		BRHalving:	     big.NewInt(1000000),
+		BRFinalSubsidy:	     big.NewInt(3000000),
 		Clique: &CliqueConfig{
 			Period: 10,
 			Epoch:  30000,
