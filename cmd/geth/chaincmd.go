@@ -72,7 +72,7 @@ It expects the genesis file as argument.`,
 			utils.KekTestFlag,
 			utils.KekistanFlag,
 			utils.BlocTestFlag,
-			utils.BlocNetFlag,
+			utils.DankNetFlag,
 		},
 		Category: "BLOCKCHAIN COMMANDS",
 		Description: `

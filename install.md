@@ -29,19 +29,19 @@ mkdir bin && go install ./...
 ```
 The bin/bin directory will contain the executables of geth
 
-4) use the flag --blocnet to initialize the genesis of mainnet blocChain, or for testnet use the flag --bloctest
+4) use the flag --danknet to initialize the genesis of mainnet blocChain, or for testnet use the flag --danktest
 mainnet: 
 ```
---blocnet
+--danknet
 ```
 testnet: 
 ```
---bloctest
+--danktest
 ```
 
 Run geth to sync the chain (Hard coded bootnodes for auto sync.)
 ```
-./geth --datadir walletDirName --blocnet
+./geth --datadir walletDirName --danknet
 ```
 
 Continue to startups.md

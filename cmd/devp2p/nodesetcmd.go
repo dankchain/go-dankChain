@@ -237,9 +237,9 @@ func ethFilter(args []string) (nodeFilter, error) {
 		filter = forkid.NewStaticFilter(params.TestnetKEKChainConfig, params.TestnetKEKGenesisHash)
 	case "kekistan":
 		filter = forkid.NewStaticFilter(params.MainnetKEKChainConfig, params.MainnetKEKGenesisHash)
-	case "bloctest":
+	case "danktest":
 		filter = forkid.NewStaticFilter(params.TestnetChainConfig, params.TestnetGenesisHash)
-	case "blocnet":
+	case "danknet":
 		filter = forkid.NewStaticFilter(params.MainnetChainConfig, params.MainnetGenesisHash)
 	case "ropsten":
 		filter = forkid.NewStaticFilter(params.RopstenChainConfig, params.RopstenGenesisHash)

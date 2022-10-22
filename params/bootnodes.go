@@ -160,7 +160,7 @@ var V5ETHBootnodes = []string{
 }
 
 var V5Bootnodes = []string{
-	// BlocNet
+	// DankNet
 	"enr:-KO4QIwbI1aN46Z_P931jojDJM-PsjRptlTxjUkTaH1O8znqbDtPtrtGZ1GSAwi4NlvSkvFS_2UZjHG-39ZVjGEwQPWGAYPA2PF4g2V0aMfGhNwalwaAgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQLpeIsNYBgrxl0iQIWZMQOWhzxDr-iyqKJ4CbAhhR27voRzbmFwwIN0Y3CCdl-DdWRwgnZf",
 	"enr:-KO4QAYdw1SQi8o74v2KTnfB2vdKCcF1FmQWvrY3n-FEjRkvMKAQAesBhchxIXPov4VKJMlkceQeqBQvJIZPwyhSi2iGAYPA3kM-g2V0aMfGhNwalwaAgmlkgnY0gmlwhC1e0eKJc2VjcDI1NmsxoQLp2vWn_jDhoBKCJqRFAKPbH4-cthww7U3muaDMFHtBBYRzbmFwwIN0Y3CCdl-DdWRwgnZf",
 }
@@ -174,9 +174,9 @@ func KnownDNSNetwork(genesis common.Hash, protocol string) string {
 	var net string
 	switch genesis {
 	case MainnetGenesisHash:
-		net = "blocnet"
+		net = "danknet"
 	case TestnetGenesisHash:
-		net = "bloctest"
+		net = "danktest"
 	case MainnetKEKGenesisHash:
 		net = "kekistan"
 	case TestnetKEKGenesisHash:

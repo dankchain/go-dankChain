@@ -207,7 +207,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 				config.EthereumNetworkID = 6969
 			}
 		}
-		// If we have the BlocNet mainnet, hard code the chain configs too
+		// If we have the DankNet mainnet, hard code the chain configs too
 		if config.EthereumGenesis == MainnetGenesis() {
 			genesis.Config = params.MainnetChainConfig
 			if config.EthereumNetworkID == 1 {

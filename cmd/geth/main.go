@@ -149,7 +149,7 @@ var (
 		utils.KekTestFlag,
 		utils.KekistanFlag,
 		utils.BlocTestFlag,
-		utils.BlocNetFlag,
+		utils.DankNetFlag,
 		utils.VMEnableDebugFlag,
 		utils.NetworkIdFlag,
 		utils.EthStatsURLFlag,
@@ -295,8 +295,8 @@ func prepare(ctx *cli.Context) {
 	case ctx.GlobalIsSet(utils.BlocTestFlag.Name):
 		log.Info("Starting Geth on BlocChain BlocTest testnet...")
 		
-	case ctx.GlobalIsSet(utils.BlocNetFlag.Name):
-		log.Info("Starting Geth on BlocChain BlocNet mainnet...")
+	case ctx.GlobalIsSet(utils.DankNetFlag.Name):
+		log.Info("Starting Geth on BlocChain DankNet mainnet...")
 
 	case ctx.GlobalIsSet(utils.DeveloperFlag.Name):
 		log.Info("Starting Geth in ephemeral dev mode...")
@@ -314,7 +314,7 @@ func prepare(ctx *cli.Context) {
 			!ctx.GlobalIsSet(utils.KekTestFlag.Name) &&
 			!ctx.GlobalIsSet(utils.KekistanFlag.Name) &&
 			!ctx.GlobalIsSet(utils.BlocTestFlag.Name) &&
-			!ctx.GlobalIsSet(utils.BlocNetFlag.Name) &&
+			!ctx.GlobalIsSet(utils.DankNetFlag.Name) &&
 			!ctx.GlobalIsSet(utils.DeveloperFlag.Name) {
 			// Nope, we're really on mainnet. Bump that cache up!
 			log.Info("Bumping default cache on mainnet", "provided", ctx.GlobalInt(utils.CacheFlag.Name), "updated", 4096)

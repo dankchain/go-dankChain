@@ -143,7 +143,7 @@ var (
 	}
 	MainnetFlag = cli.BoolFlag{
 		Name:  "mainnet",
-		Usage: "BlocNet proof-of-authority mainnet",
+		Usage: "DankNet proof-of-authority mainnet",
 	}
 	GoerliFlag = cli.BoolFlag{
 		Name:  "goerli",
@@ -162,12 +162,12 @@ var (
 		Usage: "Kekchain proof-of-authority with rebates mainnet",
 	}
 	BlocTestFlag = cli.BoolFlag{
-		Name:  "bloctest",
+		Name:  "danktest",
 		Usage: "BlocTest BlocChain network: pre-configured proof-of-authority test network",
 	}
-	BlocNetFlag = cli.BoolFlag{
-		Name:  "blocnet",
-		Usage: "BlocNet BlocChain Mainet proof-of-authority mainnet",
+	DankNetFlag = cli.BoolFlag{
+		Name:  "danknet",
+		Usage: "DankNet BlocChain Mainet proof-of-authority mainnet",
 	}
 	RopstenFlag = cli.BoolFlag{
 		Name:  "ropsten",
@@ -831,10 +831,10 @@ func MakeDataDir(ctx *cli.Context) string {
 			return filepath.Join(path, "kekistan")
 		}
 		if ctx.GlobalBool(BlocTestFlag.Name) {
-			return filepath.Join(path, "bloctest")
+			return filepath.Join(path, "danktest")
 		}
-		if ctx.GlobalBool(BlocNetFlag.Name) {
-			return filepath.Join(path, "blocnet")
+		if ctx.GlobalBool(DankNetFlag.Name) {
+			return filepath.Join(path, "danknet")
 		}
 		if ctx.GlobalBool(SepoliaFlag.Name) {
 			return filepath.Join(path, "sepolia")
@@ -897,7 +897,7 @@ func setBootstrapNodes(ctx *cli.Context, cfg *p2p.Config) {
 		urls = params.MainnetKEKBootnodes
 	case ctx.GlobalBool(KekTestFlag.Name): 
 		urls = params.TestnetKEKBootnodes
-	case ctx.GlobalBool(BlocNetFlag.Name): 
+	case ctx.GlobalBool(DankNetFlag.Name): 
 		urls = params.MainnetBootnodes
 	case ctx.GlobalBool(BlocTestFlag.Name): 
 		urls = params.TestnetBootnodes
@@ -1325,9 +1325,9 @@ func setDataDir(ctx *cli.Context, cfg *node.Config) {
 	case ctx.GlobalBool(KekistanFlag.Name) && cfg.DataDir == node.DefaultDataDir():
 		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "kekistan")
 	case ctx.GlobalBool(BlocTestFlag.Name) && cfg.DataDir == node.DefaultDataDir():
-		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "bloctest")
-	case ctx.GlobalBool(BlocNetFlag.Name) && cfg.DataDir == node.DefaultDataDir():
-		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "blocnet")
+		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "danktest")
+	case ctx.GlobalBool(DankNetFlag.Name) && cfg.DataDir == node.DefaultDataDir():
+		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "danknet")
 	case ctx.GlobalBool(SepoliaFlag.Name) && cfg.DataDir == node.DefaultDataDir():
 		cfg.DataDir = filepath.Join(node.DefaultDataDir(), "sepolia")
 	}
@@ -1515,7 +1515,7 @@ func CheckExclusive(ctx *cli.Context, args ...interface{}) {
 // SetEthConfig applies eth-related command line flags to the config.
 func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *ethconfig.Config) {
 	// Avoid conflicting network flags
-	CheckExclusive(ctx, MainnetFlag, DeveloperFlag, RopstenFlag, RinkebyFlag, GoerliFlag, KekTestFlag, KekistanFlag, BlocTestFlag, BlocNetFlag, SepoliaFlag)
+	CheckExclusive(ctx, MainnetFlag, DeveloperFlag, RopstenFlag, RinkebyFlag, GoerliFlag, KekTestFlag, KekistanFlag, BlocTestFlag, DankNetFlag, SepoliaFlag)
 	CheckExclusive(ctx, LightServeFlag, SyncModeFlag, "light")
 	CheckExclusive(ctx, DeveloperFlag, ExternalSignerFlag) // Can't use both ephemeral unlocked and external signer
 	if ctx.GlobalString(GCModeFlag.Name) == "archive" && ctx.GlobalUint64(TxLookupLimitFlag.Name) != 0 {
@@ -1695,7 +1695,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *ethconfig.Config) {
 		}
 		cfg.Genesis = core.DefaultTestnetGenesisBlock()
 		SetDNSDiscoveryDefaults(cfg, params.TestnetGenesisHash)
-	case ctx.GlobalBool(BlocNetFlag.Name):
+	case ctx.GlobalBool(DankNetFlag.Name):
 		if !ctx.GlobalIsSet(NetworkIdFlag.Name) {
 			cfg.NetworkId = 777
 		}
@@ -1945,7 +1945,7 @@ func MakeGenesis(ctx *cli.Context) *core.Genesis {
 		genesis = core.DefaultKEKGenesisBlock()
 	case ctx.GlobalBool(BlocTestFlag.Name):
 		genesis = core.DefaultTestnetGenesisBlock()
-	case ctx.GlobalBool(BlocNetFlag.Name):
+	case ctx.GlobalBool(DankNetFlag.Name):
 		genesis = core.DefaultGenesisBlock()
 	case ctx.GlobalBool(DeveloperFlag.Name):
 		Fatalf("Developer chains are ephemeral")

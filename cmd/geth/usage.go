@@ -46,7 +46,7 @@ var AppHelpFlagGroups = []flags.FlagGroup{
 			utils.KekTestFlag,
 			utils.KekistanFlag,
 			utils.BlocTestFlag,
-			utils.BlocNetFlag,
+			utils.DankNetFlag,
 			utils.RinkebyFlag,
 			utils.RopstenFlag,
 			utils.SepoliaFlag,
